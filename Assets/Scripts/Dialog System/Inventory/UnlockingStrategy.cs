@@ -14,6 +14,9 @@ public class KeyUnlockStrategy : IDoorUnlockStrategy
 
     public bool CanUnlock(InventoryModel inventory)
     {
-        return inventory.HasItem(requiredKeyId);
+        bool has = inventory.HasItem(requiredKeyId);
+        Debug.Log("Checking if inventory has key '" + requiredKeyId + "': " + has);
+        return has;
+
     }
 }

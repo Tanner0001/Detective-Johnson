@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    public InventoryItemSO item;
+   /* public InventoryItemSO item;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,7 +15,7 @@ public class ItemPickup : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    */
 }
 
 

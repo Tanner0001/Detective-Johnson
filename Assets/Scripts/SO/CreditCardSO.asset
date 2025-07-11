@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7277dccb5beb1d49b3e9e1ca7e4d9c8, type: 3}
   m_Name: CreditCardSO
   m_EditorClassIdentifier: 
-  itemName: Key
+  itemName: Credit Card
   icon: {fileID: 21300000, guid: 5430b5412bcac5b4986be0a875a5e978, type: 3}
-  isKeyItem: 1
+  isKeyItem: 0
   itemId: 1

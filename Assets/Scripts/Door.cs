@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, IUsable
 {
     public string requiredKeyId;
     private IDoorUnlockStrategy unlockStrategy;
@@ -10,25 +10,37 @@ public class Door : MonoBehaviour
     {
         unlockStrategy = new KeyUnlockStrategy(requiredKeyId);
     }
-    // we excute this when a player tries to get in the door, now if they have the key and are in said state it will open if not it will error msg and return
-    public void TryUnlock(InventoryModel inventory)
+
+    public void Use(GameObject user)
     {
+        InventoryService inventory = InventoryService.Instance;
+        if (inventory != null)
+        {
+            TryUnlock(inventory);
+        }
+    }
+
+    public void TryUnlock(InventoryService inventory)
+    {
+ 
+
         if (isOpen) return;
 
-        if (unlockStrategy.CanUnlock(inventory))
+        if (unlockStrategy.CanUnlock(inventory.GetModel()))
         {
+            Debug.Log("Door unlocked maybe");
             OpenDoor();
         }
         else
         {
-            Debug.Log("Door is locked. Try looking around for a key");
+            // would tell you cant 
         }
     }
+
 
     private void OpenDoor()
     {
         isOpen = true;
-        Debug.Log("Door unlocked");
-        // ill have to make it so a door is acutally opening
+        gameObject.SetActive(false);
     }
 }
