@@ -1,16 +1,29 @@
 using UnityEngine;
 
-public class CommandPattren : MonoBehaviour
+public class CommandPattern : ICommand
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private GameObject prefab;
+    private Vector2 position;
+    private GameObject placedObject;
+
+    public CommandPattern(GameObject prefab, Vector2 position)
     {
-        
+        this.prefab = prefab;
+        this.position = position;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Execute()
     {
-        
+        placedObject = GameObject.Instantiate(prefab, position, Quaternion.identity);
+        Debug.Log($"Marker Placed {prefab.name} / {position}");
+    }
+
+    public void Undo()
+    {
+        if (placedObject != null)
+        {
+            GameObject.Destroy(placedObject);
+            Debug.Log($"Undo {placedObject.name}");
+        }
     }
 }
