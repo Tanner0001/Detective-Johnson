@@ -1,8 +1,7 @@
-using UnityEngine;
-
 public interface ICommand
 {
-    void Redo();
-    void Execute();
 
+
+    void Execute();
+    void Undo();
 }
